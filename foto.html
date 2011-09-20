@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+	<head>
+		<title>Meu Form</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<form action="recebe_dados_do_form.html">
+			
+			<fieldset>
+				<legend>Dados Pessoais</legend>
+				<label>Nome</label>
+				<input type="text" name="xpto" value="Fulano"/> <br/>
+				<label>Senha</label>
+				<input type="password" name="pwd" value="Fulano"/> <br/>
+				<input type="number" min="0" max="100" name="idade"/>
+				<input type="email" name="asdsjdh"/>
+				<input type="search" name="s"/>
+
+				<label>Cidade</label>
+				<select name="cidade">
+					<optgroup>Minas
+						<option value="1">Belo Horizonte</option>
+						<option value="2">Betim</option>
+						<option value="3" selected>Ibirité</option>
+					</optgroup>
+					<optgroup>Bahia
+						<option value="4" selected>Salvador</option>
+					</optgroup>
+				</select><br/>
+			</fieldset>
+			<fieldset>
+				<legend>Outros</legend>
+				<input type="hidden" name="segredo" value="x">
+				<label>Sexo</label>
+				<input type="radio" name="sexo" value="m"/>M 		
+				<input type="radio" name="sexo" value="f"/>F <br/>
+				<label>Habilidades</label>
+				<textarea cols="50" rows="10">Windows Básico</textarea><br/>
+				<label>Termo de Uso</label>
+				<input type="checkbox" name="termo" value="aceito"/><br/>
+				<p>Marque se você aceita as condições do termo de uso</p>
+				<input type="submit" value="Enviar"/>
+				<input type="reset" value="Limpar (nao clique)"/>
+				<input type="file" name="resumo" value="curriculo"/>
+			</fieldset>
+		</form>
+	</body>
+		
+	
+</html>
