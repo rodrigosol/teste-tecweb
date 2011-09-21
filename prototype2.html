@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+	<head>
+		<title>Form</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="prototype.js" type="text/javascript"></script>
+		<style>
+			label{
+				margin:10px;
+				width:200px;
+				background-color:#3F4C6B;
+				color:white;
+			}
+			input{
+				display:block;
+				margin:10px;
+				width:200px;
+			}
+			input[type="button"]{
+				width:40px;
+			}
+			
+			*{
+				font-family:verdana;
+			}
+			.error{
+				border: 2px solid red;
+			}
+			table {
+				margin:10px;
+				border-spacing:10px;
+				border-collapse:collapse;
+				margin-right:10px;
+			}
+			th{
+				background-color:#3F4C6B;
+				color:white;
+			}
+
+			#lista td, th{
+				padding:5px;
+				text-align:center;
+				height:30px;
+				border:1px solid #666;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="xpto"></div>
+		
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+				<th>Data de Nascimento</th>
+			</tr>
+			<tbody id="lista"/>
+		</table>
+		
+	</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+
+var Pessoa = Class.create({
+	initialize: function(nome,telefone,nascimento){
+		this.nome = nome;
+		this.telefone = telefone;
+		this.nascimento = nascimento;
+	}
+})
+
+
+var FormPessoa = Class.create({
+	initialize: function(div,lista){
+		this.pessoas = new Array();
+		this.lista = lista;
+		
+		var form = new Element('form');
+		var l_nome = new Element('label',{'id':'l_nome'}).update("Nome do Usuário");
+		var i_nome = new Element('input',{'id':'i_nome','type':'text'});
+
+		var l_tel = new Element('label',{'id':'l_tel'}).update("Telefone");
+		var i_tel = new Element('input',{'id':'i_tel','type':'text'});
+
+		var l_nascimento = 
+			new Element('label',{'id':'l_nascimento'}).update("Data de Nascimento");
+		
+		var i_nascimento = 
+			new Element('input',{'id':'i_nascimento','type':'text'});
+
+		var submit = new Element('input',{'type':'button' , 'value':'Enviar'});
+
+		submit.observe('click',this.enviar.bind(this));
+
+		form.appendChild(l_nome);
+		form.appendChild(i_nome);
+		form.appendChild(l_tel);
+		form.appendChild(i_tel);
+		form.appendChild(l_nascimento);
+		form.appendChild(i_nascimento);
+		form.appendChild(submit);
+
+		
+		$(div).appendChild(form);
+	},
+	
+	enviar : function(){
+		var erros = this.validacao();
+		['i_nome','i_tel','i_nascimento'].each(function(e){
+			$(e).removeClassName('error');
+		})
+		if(erros.keys().size() > 0){
+			str = '';
+			erros.keys().each(function(e){
+				str += erros.get(e) + '\n';
+				$(e).addClassName('error');
+			})
+			
+		}else{
+			this.add();
+		}
+	},
+	
+	add : function(){
+		p = new Pessoa(
+				$('i_nome').value,
+				$('i_tel').value
+		);
+
+		p.nascimento = $('i_nascimento').value;
+		
+		
+		this.pessoas.push(p);
+		this.mostra_tabela();
+		
+	},
+	mostra_tabela : function(){
+		$('lista').innerHTML = '';
+		this.pessoas.each(function(p){
+			
+			var tr = new Element('tr');
+			tr.appendChild(new Element('td').update(p.nome));
+			tr.appendChild(new Element('td').update(p.telefone));
+			tr.appendChild(new Element('td').update(p.nascimento));
+			
+			$('lista').appendChild(tr);
+		})
+	
+	},
+	
+	validacao : function(){
+		erros = new Hash();
+		['i_nome','i_tel','i_nascimento'].each(function(id){
+			if ($(id).value == ''){
+				erros.set(id,'Voce deve informar o ' + id );
+			}
+		});
+		return erros;
+	}
+})
+
+new FormPessoa('xpto')
+	
+</script>
+
+
+
+
+
+
+
+
+
+

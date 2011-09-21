@@ -43,8 +43,9 @@
 		</style>
 	</head>
 	<body>
-		<input type="text"/>
-		<input type="text"/>
+		<input type="text" id="num_1"/>
+		<input type="text" id="num_2"/>
+		<input type="button" onclick="soma();" value="somar">
 		<h1 style="text-transform:capitalize">José da Silva</h1>
 		<h2 style="color:blue">José da Silva</h2>
 		<h3 class="verde fundo">Titulo 3</h3>
@@ -57,3 +58,30 @@
 		
 	</body>
 </html>
+<script type="text/javascript" charset="utf-8">
+	function soma(){
+		var e = /^\d{1,5}$/
+		var erros = new Array();
+
+		var num_1 = document.getElementById('num_1').value; 
+		if(num_1.search(e) == -1){
+			erros['num_1'] = 'numero 1 invalido';
+		}
+
+		var num_2 = document.getElementById('num_2').value;
+		if(num_2.search(e) == -1){
+			erros['num_2'] = 'numero 2 invalido';
+		}
+		
+		if(erros.length > 0 ){
+			str = '';
+			for(x = 0; x < erros.length; x++){
+				str += erros[x] + "\n";
+			}
+			alert(str);
+			return;
+		}
+		
+		alert(parseInt(num_1) + parseInt(num_2));
+	}
+</script>
