@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+	<head>
+		<title>Form</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="prototype.js" type="text/javascript"></script>
+		<script src="builder.js" type="text/javascript"></script>
+		<script src="scriptaculous.js" type="text/javascript"></script>
+		<script src="effects.js" type="text/javascript"></script>
+		<script src="controls.js" type="text/javascript"></script>
+		<script src="dragdrop.js" type="text/javascript"></script>
+		<script src="sound.js" type="text/javascript"></script>
+		<style>
+			div{
+				border:1px solid gray;
+				height:30px;
+				width:200px;
+				background-color:blue;
+
+			}
+			p{
+				color:red;
+			}
+			.hover{
+				border:3px solid red;
+			}
+			li{
+				cursor:move
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="a">Minha primeira DIV</div>
+		<div id="b">Minha segunda DIV</div>
+		<br/>
+		<input type="button" id="botao" value="clique-me" >
+		<input type="text">
+		<p>Você deve preencher o nome</p>
+		<div id="c">Arraste para cá
+			<p>Você deve preencher o nome</p>
+			<p>Você deve preencher o nome</p>
+			
+			</div>
+		<ol id="lista">
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>			
+		</ol>
+	</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+	$$('div > p').each(function(e){e.highlight();});
+
+	// Sortable.create('lista');
+	// new Draggable('a',{revert:true});
+	// new Draggable('b');
+	// Droppables.add('c',{hoverclass:'hover',
+	// 	onDrop : function(e){
+	// 		alert('O elemento ' + e + ' foi arrastado');
+	// 	}
+	// 
+	// })
+	// $('botao').observe('mouseover',function(e){
+	// 	dx = Math.floor(Math.random()*100)
+	// 	dy = Math.floor(Math.random()*100)
+	// 	f = Math.floor(Math.random()*1)
+	// 	if(f==0){
+	// 		dx *= -1
+	// 		dy *= -1
+	// 	}
+	// 	new Effect.Move(e.element(),{x:dx,y:dy,mode:'relative',duration:0.08});
+	// })
+
+
+	// $('botao').observe('click',function(element){
+	// 	$$('div').each(function(e){
+	// 		//e.highlight({startcolor:'#ff00ff',endcolor:'#00ff00',duration:0.5});
+	// 		//e.morph('background:#000; width:400px; color:#fff; border:2px dashed green; height:100px;padding:50px; margin:20px')
+	// 		//new Effect.Move(e, { x: 100, y: 100, mode: 'relative' });
+	// 		//e.move{x:100,y:100,mode:'relative'}
+	// 		//e.blindDown();
+	// 		//e.dropOut();
+	// 		//e.shake({distance:100,duration:3});
+	// 		//e.pulsate({pulses:20,duration:3});
+	// 		e.switchOff();
+	// 	});
+	// 	
+	// })
+	
+	
+</script>
+
+
+
+<script type="text/javascript" charset="utf-8">
+	// 	
+	// $('botao').observe('click', function(){
+	// 	$$('div').each(function(e){
+	// 		//e.highlight();
+	// 		//e.highlight({startcolor: '#ff0000', 	endcolor: '#ffffff' });
+	// 		//new Effect.Highlight(e,{startcolor: '#ff0000', 	endcolor: '#ffffff' });
+	// 		//e.morph('background:#080; color:#fff;');			
+	// 		//e.morph('background:#080; color:#fff; width:500px; height:40px;');
+	// 		//e.morph('background:#080; color:#fff; width:500px; height:40px; padding:40px; margin:30px; font-size:30px;');
+	// 		//new Effect.Move(e, { x: 100, y: 100, mode: 'relative' });
+	// 		//new Effect.Opacity(e, { from: 1.0, to: 0.0, duration: 0.5 });
+	// 		//e.blindDown();
+	// 		//e.blindUp();
+	// 		//e.dropOut();
+	// 		//e.fade();
+	// 		//e.fold();	
+	// 		//e.puff();	
+	// 		//e.pulsate();
+	// 		//e.pulsate({ pulses: 10, duration: 5 });
+	// 		//e.shake();
+	// 		//e.shrink();
+	// 		//e.switchOff();
+	// 	})
+	// })
+</script>
