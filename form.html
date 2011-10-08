@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+	<head>
+		<title>Form</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="prototype.js" type="text/javascript"></script>
+		<script src="builder.js" type="text/javascript"></script>
+		<script src="scriptaculous.js" type="text/javascript"></script>
+		<script src="effects.js" type="text/javascript"></script>
+		<script src="controls.js" type="text/javascript"></script>
+		<script src="dragdrop.js" type="text/javascript"></script>
+		<script src="sound.js" type="text/javascript"></script>
+		<style>
+		input + input {
+			width:300px;
+		}
+		</style>
+		
+	</head>
+	<body>
+		<div id="erros"></div>
+		<form id="cadastro_pessoa">
+			<label>Nome</label>
+			<input id="nome" type="text"/><br/>
+
+			<label>Sexo</label>
+			
+			<select id="sexo">
+				<option></option>
+				<option value="m">Masculino</option>
+				<option value="f">Feminino</option>
+			</select><br/>
+			
+			<label>Senha</label>
+			<input id="senha" type="password"/><br/>
+			
+			<label>Confirmação de Senha</label>
+			<input id="confirmacao_senha" type="password"/><br/>
+			
+			<input  type="button" value="enviar" onclick="valida()"/>
+		</form>
+		<input type="text" id="seleciona"/>
+		<input type="button" onclick="seleciona()">
+	</body>
+</html>
+
+<script type="text/javascript" charset="utf-8">
+	function seleciona(){
+		// var seletor = $('seleciona').value;
+		// $$(seletor).each(function(e){
+		// 	e.highlight();
+		// })
+
+		$$('input + input').each(function(l){
+			l.value = 'Rodrigo';
+		})
+
+	}
+
+	function ehNumero(str){
+
+		for(i = 0; i< str.length; i++){
+			if(!(str.charAt(i) >= 0 && str.charAt(i) <= 9)){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function valida(){
+		//alert('oi')
+		//Vou guardar os erros em um vetor
+		var erros = new Array();
+		
+		//Verificar se o nome tem nominio 3 caracteres 
+		var nome = document.getElementById('nome').value;
+		//Usando o prototype
+		nome = $('nome').value;
+		
+		if(nome.length < 3){
+			erros.push('O nome deve ter mais de 2 caracteres');
+		}
+		
+		if($('senha').value != $('confirmacao_senha').value ){
+			erros.push('A senha e a confirmação não batem!');
+		}
+		if(!$('senha').value.match(/[0-9]*/)){
+			
+		}
+		if(!ehNumero($('senha').value)){
+			erros.push('A senha tem que ser numerica');
+		}
+
+		
+		if($('sexo').value == ''){
+			erros.push('Você deve escolher o sexo');
+		}
+		
+		if(erros.length > 0){
+			mostra_erros(erros);
+			return false;
+		}
+		
+		$('cadastro_pessoa').submit();
+		
+	}
+	
+	
+	
+	function mostra_erros(meus_erros){
+		var ul = new Element('ul');
+		for(i = 0; i < meus_erros.length; i++){
+			var li = new Element('li').update(meus_erros[i]);
+			ul.appendChild(li);
+		}
+		
+		$('erros').appendChild(ul);
+		$('erros').shake();
+		
+	}
+	
+</script>
