@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  nascimento: 2011-10-19
+  sexo: false
+
+two:
+  nome: MyString
+  nascimento: 2011-10-19
+  sexo: false
