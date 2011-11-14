@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contato: 1
+  tipo_telefone: 
+  ddd: 1
+  numero: 1
+
+two:
+  contato: 1
+  tipo_telefone: 
+  ddd: 1
+  numero: 1
